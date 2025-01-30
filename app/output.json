@@ -1,0 +1,1738 @@
+[
+    {
+        "type": "Header",
+        "element_id": "c60b85aeb2c835f3252468e033b784e0",
+        "text": "School of Computing, Engineering and Digital technologies, 2024, 1\u20137",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 1,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Title",
+        "element_id": "f01a616d6758a995c88420607191b087",
+        "text": "doi:",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 1,
+            "parent_id": "c60b85aeb2c835f3252468e033b784e0",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "ce9d69a87cae1a68857c953dedcf57cf",
+        "text": "Advance Access Publication Date: 20 Dec 2024",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 1,
+            "parent_id": "f01a616d6758a995c88420607191b087",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "f786f0912d9f9a869c9235c2fc337a8b",
+        "text": "Department of Computing and Games",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 1,
+            "parent_id": "f01a616d6758a995c88420607191b087",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Title",
+        "element_id": "52b302244c6a1adfe0c77ee2b569befb",
+        "text": "Using Transformer-Based Models to Model Cell-Cell Interactions Within the Cancer Tumor Microenvironment",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 1,
+            "parent_id": "c60b85aeb2c835f3252468e033b784e0",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Title",
+        "element_id": "2b41595771efd8f78529c42b13a35a29",
+        "text": "Emmanuel Alawode1",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 1,
+            "parent_id": "c60b85aeb2c835f3252468e033b784e0",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "86344416a532666feaabe3e58d5c1905",
+        "text": "1Department of Computing and Games, Teesside University, Street, Postcode, Middlesbrough, United Kingdom",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 1,
+            "parent_id": "2b41595771efd8f78529c42b13a35a29",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Title",
+        "element_id": "ea9eaa8996f5147e44b9f77076f65fe3",
+        "text": "Abstract",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 1,
+            "parent_id": "c60b85aeb2c835f3252468e033b784e0",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "10fd6aa933802e22ef6d8450504bda80",
+        "text": "Understanding of cell-cell interactions within the tumor microenvironment (TME) in cancer research cannot be under stated as these interactions govern the critical processes such as immune evasion, metastasis and tumor progression. With recent advancement in spatial transcriptomics, it is now possible to analyze gene expression at the subcellular while retaining spatial context, bridging the gap between single-cell RNA- sequencing and bulk transccriptomic profiling. This study presents a novel approach to leveraging transformer- based models, specifically adapted to model cell-cell interactions within the TME. The pipeline in this study preprocessed tissue samples through a modular framework that imitates human in the loop approach to clean, cluster and annotate cell states, enabling the extraction of biologically and spatially meaningful features. This includes spatial context, tissue type, cancer scores mitochondrial activity and cell reactivity, among other metrics. To accommodate these features, various components of the base model used in this study were adapted specifically for spatial transcriptomic data. A structured sequencing language was developed and to serve as language tokens which were included into the vocabulary of the model with the help of a custom tokenizer built with a normalization module designed to retain biological tokens in their intended form, ensuring the preservation of biological and spatial semantics within tokenized sequences. To further guide the model in its training process, a tailored masking strategy was implemented to prioritize learning contextually significant embeddings withing the cell state sequence to effectively control the token prediction priority during learning. This helped the model reduce probability of masking fixed reference tokens while emphasizing dynamic and heterogeneous features. The adapted BERT model leverages it bidirectional and positional encoding efficiency to capture spacial and functional dependencies between cells. This study goes further to highlight the transformative potential of leveraging transformer architectures within the field of single-cell RNA-sequencing (scRNA seq)",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 1,
+            "parent_id": "ea9eaa8996f5147e44b9f77076f65fe3",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "11aa9d02a50f26b6077e520183145201",
+        "text": "Key words: Spatial transcriptomics, Malignancy, Tokenizer, Gene Expression",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 1,
+            "parent_id": "ea9eaa8996f5147e44b9f77076f65fe3",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Title",
+        "element_id": "b711fa288bb91c597d771c49d35d9570",
+        "text": "Introduction",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 1,
+            "parent_id": "c60b85aeb2c835f3252468e033b784e0",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "1db6cb937b357482c4bbc880500cee82",
+        "text": "Cells have been proven to communicate with their environment and neighboring cells through various methods. This intricate interplay has been the focal point of numerous studies, particularly in cancer research, where understanding the interactions between cancer cells and their tumor microenvironment (TME) has been pivotal. Cell-to-cell communication is a process by which cells interact and exchange information with each other to coordinate their activities and maintain homeostasis within tissues and organs. This communication is fundamental to the functioning of multicellular organisms, enabling cells to regulate growth, immune responses, tissue repair, and other biological processes in the organism Song et al..",
+        "metadata": {
+            "links": [
+                {
+                    "text": "Song et al ..",
+                    "url": "cite.song_cellcell_2019",
+                    "start_index": 711
+                }
+            ],
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 1,
+            "parent_id": "b711fa288bb91c597d771c49d35d9570",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "816b658098a9aba227df3e2b92f54307",
+        "text": "Recent advances in spatial transcriptomics give us the ability to analyze and explore effectively, cells and their gene expressions at the subcellular level while retaining useful spatial context of cells on the tissue by enabling the mapping of gene expression directly to the sections of the tissue to which they belong. This helps bridge the gap between traditional transcriptomic profiling techniques, such as bulk RNA-seq and single-cell RNA-seq (scRNA-seq).",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 1,
+            "parent_id": "b711fa288bb91c597d771c49d35d9570",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Title",
+        "element_id": "dfd534d97d1bbd212d55be176d8a93c9",
+        "text": "Methods",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 1,
+            "parent_id": "c60b85aeb2c835f3252468e033b784e0",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "4b7fa5b8ba5ca3d41f2422fa23f06f0a",
+        "text": "Data pre-processing",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 1,
+            "parent_id": "dfd534d97d1bbd212d55be176d8a93c9",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "e7e355c9bf5eed33b7b3dd03d9733289",
+        "text": "Spatial transcriptomic datasets often exhibit substantial noise and redundancy in their raw form, which can propagate",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 1,
+            "parent_id": "dfd534d97d1bbd212d55be176d8a93c9",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Footer",
+        "element_id": "69b4d8063f306f33016f98a5e072d02b",
+        "text": "\u00a9 The Author 2024. Published by Oxford University Press. All rights reserved. For permissions, please e-mail: journals.permissions@oup.com",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 1,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "PageNumber",
+        "element_id": "6f5b1fbe0d08d0ce0c1eef4010b8f519",
+        "text": "1",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 1,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "PageNumber",
+        "element_id": "a232b6d08b4a9728581bdbc9d05f714d",
+        "text": "2",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 2,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Header",
+        "element_id": "fa7d1b08cf6faf6f0da897c6c160fd9d",
+        "text": "Author Name et al.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 2,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Image",
+        "element_id": "6dfef5b8d3d009473c5ef97e41f6a6e4",
+        "text": "Genes Pre processing modules Expanded gene Cell state Cells /m () 8 = i\\ Cell state I/ Wi Module [ Module \u2014 Module - i \u2014 (malignancy) A W )\\ 1 o \\ \u2122 Neighborhood graphs \\ & distances Initialize pipeline perform quality Cluster cell Identify and cell state control communities malignant cells",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 2,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "4bfc9b96415f54d5bc342a9fd97c7e24",
+        "text": "Fig. 1: Preprocessing pipeline composition example.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 2,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "283d266af551787a66d0e825dd18ac82",
+        "text": "to computational models, potentially affecting their learning efficiency. To address this a modular pipeline was developed to allow code re-usability and easy adaptation for different data types. Data pre-processing was split into 7 modules that were interchangeable and expandable but shared the same state with other modules in their pipeline. Each module had it\u2019s own independent arguments that control the modules behavior and could be fine-tuned based on the requirements of the dataset being processed. These modules are dynamic but needed to add derived columns used during feature extraction.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 2,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "bee773fcd4226393d012b656de14867b",
+        "text": "The first module of the pipeline is the initiator which sets the initial state and default values for logging and configuration for plots throughout the pipeline. The second module is the data loader which handles loading of the dataset from the specified directory and performs initial filtering. This module filters out cells with high mitochondrial and ribosomal activity because excessive activity from either genes could be an indication of damaged or dying cells and artificially introduced technical noise such as uneven fixation or sequencing errors. A curated list by the BROAD Institute of ribosomal genes was used to filter identify existing ribosomal genes in the dataset. The third module calculates quality control metrics largely based on a set of pre-processing methods by Scater McCarthy et al. [2017]. The fourth module performs clustering of the cells and plots a scatter plot based on Uniform manifold Approximation and Projection (UMAP) for dimensionality reduction such that the similarity between points i and j is defined as",
+        "metadata": {
+            "links": [
+                {
+                    "text": "McCarthy et al .",
+                    "url": "cite.mccarthyScaterPreprocessingQuality2017a",
+                    "start_index": 788
+                },
+                {
+                    "text": "2017",
+                    "url": "cite.mccarthyScaterPreprocessingQuality2017a",
+                    "start_index": 805
+                }
+            ],
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 2,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Formula",
+        "element_id": "732fbc687377683a6929797c6a46013b",
+        "text": "L=y pijlog(viz) + (1 \u2014 pij) log(1 \u2014 vi) i#j",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 2,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "44cb774af2f4dc3226ab97e4bb3f4c72",
+        "text": "where \u00b5ij represents the high-dimensional similarities, and vij represents the low-dimensional similarities, preservation of local and global structures in the data. ensuring the",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 2,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Title",
+        "element_id": "41ffac9ae8944204b16c99062db5a8de",
+        "text": "Cancerous cell scoring",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 2,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "1437e1969c9e2c984d8eb9bb9a4a8066",
+        "text": "The fifth module calculates cancer scores for every cell in the tissue. This was done by analyzing a list of genes associated with abnormal expression patterns in diseases not explicitly linked",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 2,
+            "parent_id": "41ffac9ae8944204b16c99062db5a8de",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "UncategorizedText",
+        "element_id": "3123b35e8aa1bca6311047174b8592b0",
+        "text": "(1)",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 2,
+            "parent_id": "41ffac9ae8944204b16c99062db5a8de",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Image",
+        "element_id": "da6707233b2cff1824b7abc1d7947ce2",
+        "text": "5 Initiator Module & - B2 Data Loader Module ! | Initial State -+ i N alllg 'r Load Dataset Default Values Modular ~- Filter Cells Cl B - - Pipeline for Data - - - ErT) lustering Module \u00ae (\u00a9 oy convae @ Quality Control Module Processing UMAP Visualization -+ r- Scater Methods Similarity Calculation -~ ~* Quality Metrics",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 2,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "UncategorizedText",
+        "element_id": "45b463ec1ad789cfbd9aa0e19f9903ac",
+        "text": "@",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 2,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Title",
+        "element_id": "504596648157b76bc6bdcb5bd82a3390",
+        "text": "Fig. 2: Preprocessing pipeline composition example.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 2,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "e214ea34ae8ebbfb0a6b35224ce09790",
+        "text": "to cancer, using data collected from various sources and bench- marked by the STRING database Szklarczyk et al. [2015] where each gene has a confidence score. This list was filtered to contain only genes specifically implicated in known cancer-related diseases. Genes with a confidence score below 0.5 were further filtered out of the list. The remaining genes were compared with those identified in the tissue sample, and only those present in both datasets were retained to calculate a cancer score for the cell. For each gene, the final cancer weight was determined by calculating the mean confidence score across all diseases in which the gene is implicated, using data from the filtered cancer gene dataset. This weight reflects the average reliability of the gene\u2019s association with disease states. The malignancy score for each cell was then computed by summing the product of these weights and the expression levels of overlapping genes present in the tissue sample, providing a measure of the cell\u2019s potential malignancy. A new entry of the genes and their weights were then attached to the cell data state of the pipeline. This can be given as.",
+        "metadata": {
+            "links": [
+                {
+                    "text": "Szklarczyk et al .",
+                    "url": "cite.szklarczykSTRINGV10Protein2015",
+                    "start_index": 94
+                },
+                {
+                    "text": "2015",
+                    "url": "cite.szklarczykSTRINGV10Protein2015",
+                    "start_index": 113
+                }
+            ],
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 2,
+            "parent_id": "504596648157b76bc6bdcb5bd82a3390",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Formula",
+        "element_id": "644e5bf3f2a67d7c2ffbc01dac6b4f32",
+        "text": "\u201c\u2019gzii 9.is",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 2,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "6978a1e73aefe24160116ac666f9a406",
+        "text": "where wg is the final cancer weight for gene g, Cg,i is the confidence score of gene g in i and n is the total number of diseases in which g is abnormally expressed. Other modules include analytical modules that further analyze top n overly expressed",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 2,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "UncategorizedText",
+        "element_id": "8f8f22e4a6fe87dace4f9332d2b260c6",
+        "text": "(2)",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 2,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Header",
+        "element_id": "68be995c5ccf2ac76c2a94be0b278a4d",
+        "text": "Cell-Cell interaction modeling",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 3,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "5f7bb18700fbe029723cc10452674057",
+        "text": "cancerous genes in a cell community based on the clustering results from earlier modules. The final result from the preprocessing pipeline is an AnnData object that holds robust cell and tissue level information about the sample analysed and, figures that show results of the different analysis. The final result of the pre- processing pipeline is an AnnData object. AnnData objects are annotated matrices that have computationally efficient features.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 3,
+            "parent_id": "68be995c5ccf2ac76c2a94be0b278a4d",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Title",
+        "element_id": "6ebe930f7ea3eb60c37d6b7bbc3490cb",
+        "text": "Cancer Score Calculation Process",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 3,
+            "parent_id": "68be995c5ccf2ac76c2a94be0b278a4d",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Image",
+        "element_id": "283588476e237111185efeb48dbcefce",
+        "text": "Gene Data Collection | Gene Filtering Gene Comparison Cancer Weight Calculation Malignancy Score Computation",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 3,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "5375ccdadb6e2178be34b3dd0d637b5c",
+        "text": "Final Cancer Score",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 3,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "da2268ffb37893a44685c60fc9409067",
+        "text": "Fig. 3: Preprocessing pipeline composition example.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 3,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Title",
+        "element_id": "49360f2aa5dc8facc7859c38e9f31b75",
+        "text": "Feature extraction",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 3,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "5929af1ea2392722c77d91c110ce4989",
+        "text": "In the field of analyzing single-cell RNA sequencing (scRNA-seq), the AnnData object stands as a rich data structure that holds a lot of information that can be used to infer cell behaviors and attributes for analysis. But not all of the information captured within the structure is useful for training deep learning models. To prepare the data for extraction, 8 major features were distilled from the pre-processed data based on their ability to convey significant information about a cells state. The first feature, tissue type, is pivotal in providing context about the TME of the cell. With tissue-level awareness, the model can better adapt to the variations in gene expression and cellular behaviour that are tied to specific tissue. This is particularly crucial in cancer research where the cellular environment can significantly influence functional and interaction changes. Next, spatial context [x, y] of the cells were added as another feature. The distances were taken from the AnnData and then max-normalized. Max normalization was done by setting the maximum distance to 1 and then scaling down other values to match. This was done to reduce distance value ranges as this simplifies computation and brings the datasets of varying sizes to the same scale while preserving relative relationships between the distances.The cancer cell score that was derived during pre-processing was referenced and added to the feature set. Following the R-implementation of Seurat Satija et al. [2015], gene expression variability was analyzed. This focused on how different genes behaved across the sampled tissue. These highly-variable-genes (HVGs) are genes that are expressed in high variability across the TME as excluding gene variability reduces the efficiency in capturing cell heterogeneity. For each cell a fixed number of highly expressed HVGs were extracted and added to the",
+        "metadata": {
+            "links": [
+                {
+                    "text": "Satija",
+                    "url": "cite.satijaSpatialReconstructionSinglecell2015",
+                    "start_index": 1478
+                },
+                {
+                    "text": "et al .",
+                    "url": "cite.satijaSpatialReconstructionSinglecell2015",
+                    "start_index": 1485
+                },
+                {
+                    "text": "2015",
+                    "url": "cite.satijaSpatialReconstructionSinglecell2015",
+                    "start_index": 1493
+                }
+            ],
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 3,
+            "parent_id": "49360f2aa5dc8facc7859c38e9f31b75",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "dae5cc269e95f2844dbcf4c99659aac0",
+        "text": "feature list. Mitochondrial activity was evaluated by computing the total expression of genes connected with mitochondria. The expression values of mitochondrial genes were tallied, and its sum was compared to the total expression count for the current cell. The expression values were then converted into percentage, with each expression sum an the divisor being multiplied 100. The mitochondrial activity of a cell provides cellular energy metabolism and is a good indicator of cell health.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 3,
+            "parent_id": "49360f2aa5dc8facc7859c38e9f31b75",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Title",
+        "element_id": "2c9828b11a60cd5590010b2378a131e2",
+        "text": "Cell reactivity",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 3,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "0f4295602336f61d3e19387538d0728a",
+        "text": "The cell reactivity Sr is a score given to each cell based on it\u2019s tendency to interact with other cells. The reactivity strength of the cells were calculated by extracting the graph adjacency matrix and converting them into a numpy array. Then the pair-wise euclidean distances between all spatial coordinates were calculated resulting in a matrix of distances where each element [i, j] represents the euclidean distance between the spatial coordinates of spot i and j. The inverse of each element on the matrix was calculated and the diagonal of the matrix was filled with infinity to avoid zero-divisions when calculating the inverses. Deriving the inverses converts the distances into a measure of proximity where higher inverse distance depicts closer cell spots which were later summed up to get the reactivity strength of a spot. Separate weights were assigned to the graph adjacency and the spatial distances giving higher weights to the spatial distances to increase spatial influence. The values for connectivities and distances were then brought to the same scale with min-max normalization and summed up to give the final reactivity score.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 3,
+            "parent_id": "2c9828b11a60cd5590010b2378a131e2",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Formula",
+        "element_id": "d5684f5421e595891795761c02f73eba",
+        "text": "Si = \u03c3 \u00b7 Gi \u2212 min(G) max(G) \u2212 min(G) \u00b7 \u03b2 \u00b7 Pi \u2212 min(P ) max(P ) \u2212 min(P )",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 3,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "500dc6b8867cc6b2452d3a23800ca08a",
+        "text": "where Sr is the reactivity score for cell i, Gi is the graph-based connectivity score, Pi is the spatial score, a and b are weights given to the connectivity scores and distance scores respectively, min(G) and max(G) are the minimum and maximum of G, min(P ) and M ax(P ) are the minimum and maximum of P respectively and \u03c3 and \u03b2 are weights assigned to the connectivities and distances respectively.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 3,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Title",
+        "element_id": "e810f8d164546ac7d6775496878cf951",
+        "text": "Cell-cell interaction score",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 3,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "317589d400d940b37969a75c6045cf5c",
+        "text": "After getting cell reactivity scores, cell-cell interaction scores for each cell and it\u2019s neighbors were calculated. Connectivities and distances were calculated the same way as they were for reactivity score without deriving the mean. The weights used to derive cell reactivity was applied on the conectivites and spatial distances to ensure spatial context was assigned a slightly higher weight value while aligning with the current cells reactivity score value. Hence one score was assigned to each neighbor of the cell. For each cell, a list of length n of neighbors with the highest interactivity score was added to each cells feature. Each neighbor item had its normalized spatial location added to it as a feature. The distance between the neighboring cell and the current cell was calculated based on the euclidean distance between the spatial coordinates of both cells.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 3,
+            "parent_id": "e810f8d164546ac7d6775496878cf951",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Formula",
+        "element_id": "6b062bb4e7d4813491475010d129909f",
+        "text": "= \u2014 d(Ce,Cn) (zn \u20142c)? + (yn \u2014 ye)?",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 3,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "458342691b74f3b0c9cc1801ec8c7084",
+        "text": "where Cc is the current cell with its coordinates, [xc, yc] and Cn is the neighbor with coordinates [xn, yn]. The angle between each cell was also calculated based on their coordinates. Here the angle \u03b8 of the vector \u20d7v with respect to the positive x-axis was computed",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 3,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "PageNumber",
+        "element_id": "4e114a8e6d7a21e71e982a31d002c7f8",
+        "text": "3",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 3,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "UncategorizedText",
+        "element_id": "be34ba62cb347e6edd0870c0a2d95e34",
+        "text": "(3)",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 3,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "UncategorizedText",
+        "element_id": "de8df3e1440ce110376cf26ddc3cdfd4",
+        "text": "(4)",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 3,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "PageNumber",
+        "element_id": "dd78af299ba51c5cc1a04dfe69652338",
+        "text": "4",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 4,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "79a90bf9525e05bccaacfa73334d96e5",
+        "text": "using the arctangent. where \u20d7v is the displacement between the coordinates of both cells.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 4,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Formula",
+        "element_id": "fe2bcb4cf53a3fd059d6941096479ffd",
+        "text": "\u03b8 = arctan 2(yn \u2212 yc, xn \u2212 xc)",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 4,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "1e0a8b834c998fa679d4d2e6f5f180af",
+        "text": "The reactivity score of the neighbor was also added as a feature to the cell. The top n neighbors with highest interactivity scores were then attached to the cells feature object.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 4,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Title",
+        "element_id": "e2110d5a79d1421b9cca18cca6cdef02",
+        "text": "Border cells",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 4,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "33ab590c2d938c883bbd13004499bf46",
+        "text": "In this study, a cluster of cells are referred to as a community and cells that are located at the edges of these communities are referred to as Border Cells. To identify border cells, the cluster composition of each cell\u2019s neighbors was analyzed. A threshold was set as the higher limit of spatially close neighbors belonging a different community a cell has to have, to be considered a border cell. To determine an optimal threshold for higher limit, the sum of every cells neighbors with different communities was compiled into a list, then the nth percentile of the number of neighbors every cell had was used to set a threshold. This is crucial as it takes into consideration the distribution of differing neighbors cross the tissue sample thus, allowing threshold to be adaptable to different tissue sizes.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 4,
+            "parent_id": "e2110d5a79d1421b9cca18cca6cdef02",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Title",
+        "element_id": "3558fd3492ef3326561468baef6b57fa",
+        "text": "Tokenization",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 4,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "de16ec680002678e9285a6e8c550f54a",
+        "text": "To perform fine-tuning on the model, training data had to be created from the features that had been extracted. A corpus of well structured sequences was constructed using the extracted features where each sequence holds interpreted feature attributes that convey the state of an individual cell. Every cell sequence within the corpus was structured to have the same sequential arrangement thus, giving equal positional interpretation to every point in the sequence for all sequences with each position holding its own significance in cell state interpretation.Tokens are the smallest unit of text than be processed by Natural Language Processing (NLP) models. Each token could either be a single character or a sequence of characters. Tokens do not hold any inherent meaning on their own and this flexibility allows for them to be used in as representations of any kind of information given that they are reflective of the input data\u2019s structure and content. In BERT- based models, tokens play a pivotal role in encoding text into numerical representations (embeddings). Specific tokens, known as special tokens, can be pre-assigned meanings and included in the tokenizer for specific purposes. For instance default tokens like [CLS] which denotes the start of a sequence and SEP which serves as a separator for different segments within a sequence. In this project, custom special tokens were introduced to enhance the interpretability and functionality of the tokenized sequences. These tokens were strategically designed to denote sequence pointers and mark critical locations within the sequences. BERT relies on the positions of tokens to understand the relationship between the tokens in a sequence. By incorporating custom tokens, the tokenizer was tailored to guide BERTs understanding on the positional embeddings within the sequence. Every position within the sequence held the same meaning with the custom tokens separating the segments of the sequence.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 4,
+            "parent_id": "3558fd3492ef3326561468baef6b57fa",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "73d329498fcfc24398ae0e02f62835aa",
+        "text": "A total of 11 custom special tokens were introduced. The token arrangement for each sequence was designed to encode the extracted features into a structured format that aligns with the requirements of the BERT model. Each sequence begins with a [CLS] token, which serves as a classier token that pools",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 4,
+            "parent_id": "3558fd3492ef3326561468baef6b57fa",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "UncategorizedText",
+        "element_id": "e2ac8267e79b057183d622dfb8ef0820",
+        "text": "(5)",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 4,
+            "parent_id": "3558fd3492ef3326561468baef6b57fa",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Header",
+        "element_id": "42ea5739e66be6f9ddd31eafb57590db",
+        "text": "Author Name et al.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 4,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "75a599ce222953868108ff1dba695900",
+        "text": "information from the entire sequence. This is followed by the [TISSUE] token and its associated value T , which encodes the type of the cell belongs to, providing tissue level biological identifier. The [SPATIAL] token introduces the spatial context of the cell, represented by the coordinates x and y, which situate the cell within its tissue environment. Next, the [CANCER] token precedes the cancer score Cs which depicts the degree of malignancy of the cell, contributing to a nuanced understanding of the cells pathological context. The cancer score is followed by a series of gene related tokens where each entity includes the [GENE] token which marks the start of a gene expression entity, followed by the gene-specific attributes GnN , GnE and GnD , which represent the gene name, expression level, and dispersion, relatively. these attributes are computed for the top n highly variable genes (HVGs) expressed within the cell, offering a concise and detailed snapshot of its transcriptional activity. The [IS BORDER] token is a custom special token that provides an indicator of whether the cell is at the border of its community. The border denoting token is followed by a set of tokens that reflect neighborhood information of the cell. Each spot starts with a [NEIGHBOR] token followed by value tokens Nnx, Nny, Nd and N\u03b8 Ni with Nnx and Nny denoting representing the spatial coordinates of the nth neighbor, Nd denoting the euclidean distance to the neighbor, N\u03b8 indicating the angular position, and Ni identifying the neighbors interactivity score. Finally, the MITO MED token encodes information related to the mitochondrial activity within the cell, a potential indicator of cellular energy states or stress responses. The sequence concludes with the [SEP] token as shown in figure 4. Final token sequence is given as [CLS] [TISSUE] T [SPATIAL] x y [CANCER] Cs [GENE] GnN GnE GnD [IS BORDER] [NEIGHBOR] Nnx Nny Nd N\u03b8 Ni [MITO MED] [SEP]",
+        "metadata": {
+            "links": [
+                {
+                    "text": "4",
+                    "url": "figure.caption.4",
+                    "start_index": 1792
+                }
+            ],
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 4,
+            "parent_id": "42ea5739e66be6f9ddd31eafb57590db",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "9043c5a99d51fd5acc6d18e5b4f799f6",
+        "text": "A custom tokenizer was built to accommodate the biological and spatial tokens that have been introduced into the models vocabulary. The special tokens were collated and added into the tokenizer, then gene names were explicitly incorporated into the vocabulary. Each gene is prefixed with a unique identifier \u201dgene \u201d, to distinguish it from other text elements and maintain it\u2019s biological relevance. This approach avoids ambiguities that may arise from overlapping meanings with common words, ensuring precise representation of gene-related information. IN every cell sequence, the values are designed to be treated as single tokens, but this is not the default behavor of the default tokenizer. The custom tokenizer was adapted to do this by applying transformations which prepare the sequence for model consumption. These transformations ensure that the characters are tokenized in a way that is both meaningful for the model and effectively retains its biological representation. The transformations includes normalizers applied sequentially guided by regular expression patterns. The first layer of normalization retains the decimal nature of values that hold numeric information like spatial coordinates and reactivity scores. The second layer preserves integers and standalone units by adding spaces around them, the third layer ensures that underscores are treated as separate tokens which provides clarity when underscores are used in structured tokens like gene CGGBP1. The final 2 layers handle removal of any diacritic characters in the tokens. A pre- tokenization class was added to carefully handle white-spaces and manage other unique characteristics of the token sequence. the tokenizer uses the WordPiece model which has been proven to",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 4,
+            "parent_id": "42ea5739e66be6f9ddd31eafb57590db",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Header",
+        "element_id": "1bb2aae0e6a2b4be89a7744d561279e5",
+        "text": "Cell-Cell interaction modeling",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 5,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Image",
+        "element_id": "2faceed4998b48c62404f708758ed9c1",
+        "text": "[cLS] tissue type \u2014 o \u2014> X coords \u2014 y coorxds | [RE pa\u2014 cancer score ] ANCER] reactivity ~[GENE] I \u00ab\u2014 gene name \u2014 expression \u2014 dispersion NO R] \u2014 e interactive \u00ab\u2014 angle distance loc y loc x \u2018 TO_MED] [SEP] Default tokens Custom tokens [I\":IITQ_VHIGH:]V / Expanded vocabulary",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 5,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "4758ad666cc9eb84236d8112724200d9",
+        "text": "Fig. 4: Token sequence structure for corpus file.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 5,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "PageNumber",
+        "element_id": "36ff8f0cb30ba18c37f6f86eea877ea1",
+        "text": "5",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 5,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "3dd684e0357dcc0b20144aa0967cdfbc",
+        "text": "handle out-of-vocabulary issues well. A post processing class was then added to insert the start and end sequence special tokens.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 5,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Title",
+        "element_id": "ca0a72dfd366ab13e396c2cd352ddc96",
+        "text": "Experiments",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 5,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "7ed1f6c0699c277a79178c06c6085ee5",
+        "text": "BERT which stands for Bidriectional Encoder Representation from Transformers, is a self-supervised represntation model designed to pre-train deep bidirectional representations from unlabelled text by jointly conditioning on both left and right context in all layers Devlin et al. [2019].Although BERT has been proven to be versatile in other applications, it was designed to improve on pre-existing models by using a masked language model (MLM) pre-training objective. This makes it adaptable to various tasks by fine-tuning with additional output layers. The base model used in this project was the bert-base-uncased which is a non case-sensitive model that converts all tokens to lower case before use. BERT learns by masking random tokens in the sequence by replacing them with the [MASK] special token and attempting to predict the correct token correctly during training.",
+        "metadata": {
+            "links": [
+                {
+                    "text": "Devlin et al .",
+                    "url": "cite.devlinBERTPretrainingDeep2019",
+                    "start_index": 266
+                },
+                {
+                    "text": "2019",
+                    "url": "cite.devlinBERTPretrainingDeep2019",
+                    "start_index": 281
+                }
+            ],
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 5,
+            "parent_id": "ca0a72dfd366ab13e396c2cd352ddc96",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "0ed3ca101c3d10850af7f013ef41c58c",
+        "text": "The pipeline implemented in this paper is an MLM fine-tune of BERT to enable it predict values of a given cell\u2019s state and it\u2019s environment with controlled emphasis on the cells spatial context. The models bidirectional learning helps it to learn on a structured sequence, trends for different given positions within the sequence. The vocabulary of the base model was extended to fit the new vocabulary size of the custom tokenizer to prevent unknown-token issues when the model encounters custom tokens. This also allows the custom token transforms to be applied, preventing the model from breaking tokens that should be considered as a whole. A",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 5,
+            "parent_id": "ca0a72dfd366ab13e396c2cd352ddc96",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "8db23659ebf78fbf42942d3922cbca40",
+        "text": "custom masking strategy was developed to optimize the token masking process within the sequences representing embedded cell states.This approach ensures the model prioritizes learning the variable and contextually significant aspects of the cell state sequence, which are critical for capturing spatial and functional heterogeneity. Custom special tokens like gene and neighbor identifiers that act as fixed reference points across conditions were de-emphasized by reducing the probability of them getting masked during training. Each special token got a masking probability of 5% while tissue type tokens got a probability of 20% and gene names which were not special tokens but fixed vocabulary tokens were given a masking probability of 10%. The masking strategy class had a standard probability of 15% applied to every other token. The tissue type was assigned with the highest masking probability, set at 20% as shown in figure 5, to enhance the models ability to accurately associate specific cell types with their corresponding tissue samples. By increasing tissue type masking priority, the model is hypothesized to develop a more nuanced behavioral pattern identification of similar cell compositions - same HVGs, neighbors, cancer score or other properties, across different TMEs. This approach is particularly beneficial for subsequent unsupervised fine-tuning on TMEs captured from different regions of the body, giving the ability to assess how cells with identical transcriptomes might behave across various organs or what specific conditions within various organs are required to induce and maintain a cell in a particular functional state.",
+        "metadata": {
+            "links": [
+                {
+                    "text": "5",
+                    "url": "figure.caption.5",
+                    "start_index": 928
+                }
+            ],
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 5,
+            "parent_id": "ca0a72dfd366ab13e396c2cd352ddc96",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "PageNumber",
+        "element_id": "83ec22c9c7c687c589f082af81fe9cdb",
+        "text": "6",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Image",
+        "element_id": "99684eda9f23f564936ac22d1a196d8f",
+        "text": "Masking Ffrobabll\\\\y 20% 15% 10% 5% Tissue Type Gene Name Standard Token Type Special Tokens okens Tokens Probability",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "6f32aaa90e434949026e9d23b68efcf7",
+        "text": "Fig. 5: Masking probabilities of tokens.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Title",
+        "element_id": "2af3215149adae085d0806c570f453c0",
+        "text": "Data availability",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "a536f403e17533e34b2cbfcff1b2d10b",
+        "text": "The following datasets were used to train and evaluate the models performance.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "parent_id": "2af3215149adae085d0806c570f453c0",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "a0256845590c598d9a03557edddd6b26",
+        "text": "A sample of human brain tumor from visium 10x Genomics FFPE human brain cancer tissue (Visium CytAssist). The dataset was published 14th of Feb 20213. https://www.10xgenomics.co m/datasets/human-brain-cancer-11-mm-capture-area-ffpe-2 -standard. The dataset consists of 10,878 cells and 18, 085 genes.",
+        "metadata": {
+            "links": [
+                {
+                    "text": "https :// www . 10xgenomics . co",
+                    "url": "https://www.10xgenomics.com/datasets/human-brain-cancer-11-mm-capture-area-ffpe-2-standard",
+                    "start_index": 151
+                },
+                {
+                    "text": "m / datasets / human - brain - cancer - 11 - mm - capture - area - ffpe - 2",
+                    "url": "https://www.10xgenomics.com/datasets/human-brain-cancer-11-mm-capture-area-ffpe-2-standard",
+                    "start_index": 178
+                },
+                {
+                    "text": "- standard",
+                    "url": "https://www.10xgenomics.com/datasets/human-brain-cancer-11-mm-capture-area-ffpe-2-standard",
+                    "start_index": 234
+                }
+            ],
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "parent_id": "2af3215149adae085d0806c570f453c0",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "dfd09114cde4dd9046af09f93be4d0d4",
+        "text": "A sample of human lung tumor from visium 10x Genomics FFPE human lung cancer was also used. Published 13th July, 2022. https://www.10xgenomics.com/datasets/human-lung-can cer-ffpe-2-standard",
+        "metadata": {
+            "links": [
+                {
+                    "text": "https :// www . 10xgenomics . com / datasets / human - lung - can",
+                    "url": "https://www.10xgenomics.com/datasets/human-lung-cancer-ffpe-2-standard",
+                    "start_index": 420
+                },
+                {
+                    "text": "cer - ffpe - 2 - standard",
+                    "url": "https://www.10xgenomics.com/datasets/human-lung-cancer-ffpe-2-standard",
+                    "start_index": 472
+                }
+            ],
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "parent_id": "2af3215149adae085d0806c570f453c0",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Title",
+        "element_id": "644494d425d7c75e210f35f2ced7ee41",
+        "text": "Results",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "db83097c6b26db527cf88c54753d8050",
+        "text": "The model was first trained on a training dataset corpus constructed from analyzed visium 10X human brain cancer tissue captured by 10 Genomics. The tissue had about 10,878 cells and 18,085 genes.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "parent_id": "644494d425d7c75e210f35f2ced7ee41",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Title",
+        "element_id": "0d3d5acd93bd3b17ed16367c5fb845ad",
+        "text": "Table 1. Training - Human Brain caner Tissue",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Table",
+        "element_id": "8b0d0c0683a12148c73a477627d6b8ca",
+        "text": "epoch loss perplexity accuracy masked accuracy ep 1 2.4074 11.1 25% 61.60% ep 2 1.1501 3.16 69.75% 69.75% ep 3 1.0625 2.89 71.40% 71.40% ep 4 10243 2.79 72.78% 72.78% ep 5",
+        "metadata": {
+            "text_as_html": "<table><thead><tr><th>epoch</th><th>loss</th><th>perplexity</th><th>accuracy</th><th>masked accuracy</th></tr></thead><tbody><tr><td>ep 1\n 1</td><td>2.4074</td><td>11.1</td><td>25%</td><td>61.60%</td></tr><tr><td>ep 2\n 2</td><td>1.1501</td><td>3.16</td><td>69.75%</td><td>69.75%</td></tr><tr><td>ep 3\n 3</td><td>1.0625</td><td>2.89</td><td>71.40%</td><td>71.40%</td></tr><tr><td>ep 4\n 4</td><td>10243</td><td>2.79</td><td>72.78%</td><td>72.78%</td></tr><tr><td>ep 5\n 5</td><td></td><td></td><td></td><td></td></tr></tbody></table>",
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "parent_id": "0d3d5acd93bd3b17ed16367c5fb845ad",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "8e1aae958737af2e8fd9a66bf38b9336",
+        "text": "Source: This is an example of table footnote this is an example of table footnote this is an example of table footnote this is an example of table footnote this is an example of table footnote",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "parent_id": "0d3d5acd93bd3b17ed16367c5fb845ad",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "951b4deb4aa7fe822b643c0397bcb6de",
+        "text": "1Example for a first table footnote.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "parent_id": "0d3d5acd93bd3b17ed16367c5fb845ad",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "76dda551dbab8db4f87df66c78e7a817",
+        "text": "2Example for a second table footnote.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "parent_id": "0d3d5acd93bd3b17ed16367c5fb845ad",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "95c7161201b394a1026e624ea73a3cea",
+        "text": "For a quote environment, one has to use",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "parent_id": "0d3d5acd93bd3b17ed16367c5fb845ad",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "c84cc1c6041369dcf751ea98be6822bb",
+        "text": "\\begin{quote}...\\end{quote}",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "parent_id": "0d3d5acd93bd3b17ed16367c5fb845ad",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "1ff6ba0c4fdd454b8512e9d0878e6a8f",
+        "text": "Quoted text example. Aliquam porttitor quam a lacus. Praesent vel arcu ut tortor cursus volutpat. In vitae pede quis diam bibendum placerat. Fusce elementum convallis neque. Sed dolor orci, scelerisque ac, dapibus nec, ultricies ut, mi. Duis nec dui quis leo sagittis commodo.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "parent_id": "0d3d5acd93bd3b17ed16367c5fb845ad",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Header",
+        "element_id": "91ef337d0805cd652403b9ab7ebd3c92",
+        "text": "Author Name et al.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "7468e7fb9df6bea1e837038b7dca5f73",
+        "text": "Donec congue. Maecenas urna mi, suscipit in, placerat ut, vestibulum ut, massa. Fusce ultrices nulla et nisl (refer Figure ??). Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam ligula arcu, elementum a, venenatis quis, sollicitudin sed, metus. Donec nunc pede, tincidunt in, venenatis vitae, faucibus vel (refer Table ??).",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "parent_id": "91ef337d0805cd652403b9ab7ebd3c92",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Title",
+        "element_id": "0b94c905abbf0731816a7d667f12f54f",
+        "text": "Conclusion",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "parent_id": "91ef337d0805cd652403b9ab7ebd3c92",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "5294f934d4dd31e7f11530f64605ad09",
+        "text": "Some Conclusions here.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "parent_id": "0b94c905abbf0731816a7d667f12f54f",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "36cad0321f0874c961dd3ca7c9fb4497",
+        "text": "Example for an unnumbered figure:",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "parent_id": "0b94c905abbf0731816a7d667f12f54f",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Image",
+        "element_id": "bccf2c5e02708df14c806fd403db38b0",
+        "text": "",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Title",
+        "element_id": "964b8dc638a63833ce412455bbcfa18a",
+        "text": "Competing interests",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "b35f4d104d7a13ffa9446e8a30d5ffa8",
+        "text": "No competing interest is declared.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "parent_id": "964b8dc638a63833ce412455bbcfa18a",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Title",
+        "element_id": "3311d147559081d15c8cdbfe0a4c25c9",
+        "text": "Author contributions statement",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "c9048ceba7ea12ad6b87b72d275a9767",
+        "text": "Must include all authors, identified by initials, for example: S.R. and D.A. conceived the experiment(s), S.R. conducted the experiment(s), S.R. and D.A. analysed the results. S.R. and D.A. wrote and reviewed the manuscript.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "parent_id": "3311d147559081d15c8cdbfe0a4c25c9",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Title",
+        "element_id": "de6c625fbcb306cb71f0808e35623579",
+        "text": "Acknowledgments",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "ba57aa25d8abaf93506399e7a0776963",
+        "text": "The authors thank the anonymous reviewers for their valuable suggestions. This work is supported in part by funds from the National Science Foundation (NSF: # 1636933 and # 1920920).",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "parent_id": "de6c625fbcb306cb71f0808e35623579",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Title",
+        "element_id": "b6226865a9e00cea4a0f1d4e876f9719",
+        "text": "References",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "ff5102a1713ebc1d023d27b9b49990f9",
+        "text": "Dongli Song, Dawei Yang, Charles A. Powell, and Xiangdong Wang. Cell\u2013cell communication: old mystery and new opportunity. 35(2):89\u201393. ISSN 0742-2091, 1573-6822. doi: 10.1007/s10565-019-09470-y. URL http://link.springer.co m/10.1007/s10565-019-09470-y.",
+        "metadata": {
+            "links": [
+                {
+                    "text": "http :// link . springer . co",
+                    "url": "http://link.springer.com/10.1007/s10565-019-09470-y",
+                    "start_index": 174
+                },
+                {
+                    "text": "m / 10 . 1007 / s10565 - 019 - 09470 - y",
+                    "url": "http://link.springer.com/10.1007/s10565-019-09470-y",
+                    "start_index": 198
+                }
+            ],
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "parent_id": "b6226865a9e00cea4a0f1d4e876f9719",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "448d50875228a5d90f8fe4678d3eb581",
+        "text": "Davis J McCarthy, Kieran R Campbell, Aaron T L Lun, and Quin F Wills. Scater: Pre-processing, quality control, normalization and visualization of single-cell RNA-seq data in R. Bioinformatics, 33(8):1179\u20131186, April 2017. ISSN 1367-4803, 1367-4811. doi: 10.1093/bioinformatics/btw777.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "parent_id": "b6226865a9e00cea4a0f1d4e876f9719",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "e513fb5fb4e3660f4e25c042d14ef02c",
+        "text": "Damian Szklarczyk, Andrea Franceschini, Stefan Wyder, Kristoffer Forslund, Davide Heller, Jaime Huerta-Cepas, Milan Simonovic, Alexander Roth, Alberto Santos, Kalliopi P. Tsafou, Michael Kuhn, Peer Bork, Lars J. Jensen, and Christian von Mering. STRING v10: Protein\u2013protein interaction networks, integrated over the tree of life. Nucleic Acids Research, 43(D1):D447\u2013D452, January 2015. ISSN 0305-1048. doi: 10.1093/nar/gku1003.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 6,
+            "parent_id": "b6226865a9e00cea4a0f1d4e876f9719",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Header",
+        "element_id": "9e1010cb148e9045400349b645914ac4",
+        "text": "Cell-Cell interaction modeling",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 7,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "3e72296b9c6a4a8acafc28d8b74ca2df",
+        "text": "Table 2. Model evaluation on trained dataset.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 7,
+            "parent_id": "9e1010cb148e9045400349b645914ac4",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "Table",
+        "element_id": "ace3701383316597f19048d61c40f2ce",
+        "text": "Element 11 Element 22 Project Energy \u03c3calc \u03c3expt Energy \u03c3calc \u03c3expt Element 3 990 A 1168 1547 \u00b1 12 780 A 1166 1239 \u00b1 100 Element 4 500 A 961 922 \u00b1 10 900 A 1268 1092 \u00b1 40",
+        "metadata": {
+            "text_as_html": "<table><thead><tr><th rowspan=\"2\">Project</th><th colspan=\"3\">Element 1*</th><th colspan=\"3\">Element 22</th></tr><tr><th>Energy</th><th>Ocale</th><th>Teupt</th><th>Energy</th><th>Ocale</th><th>Oexpt</th></tr></thead><tbody><tr><td>Element 3</td><td>990 A</td><td>1168</td><td>1547 \u00a3 12</td><td>780 A</td><td>1166</td><td>1239 \u00a3 100</td></tr><tr><td>Element 4</td><td>500 A</td><td>961</td><td>922 + 10</td><td>900 A</td><td>1268</td><td>1092 + 40</td></tr></tbody></table>",
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 7,
+            "parent_id": "9e1010cb148e9045400349b645914ac4",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "97fa56ffc6d232b23a7e76baf14196e3",
+        "text": "Note: This is an example of table footnote this is an example of table footnote this is an example of table footnote this is an example of table footnote this is an example of table footnote",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 7,
+            "parent_id": "9e1010cb148e9045400349b645914ac4",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "fc48f46e62fead1899f6a1dc4a2d2576",
+        "text": "1Example for a first table footnote.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 7,
+            "parent_id": "9e1010cb148e9045400349b645914ac4",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "40561efb5585f9d76c1ba2a5abe36715",
+        "text": "2Example for a second table footnote.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 7,
+            "parent_id": "9e1010cb148e9045400349b645914ac4",
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "PageNumber",
+        "element_id": "de2d408c3c7c8247af6d130022271cf4",
+        "text": "7",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 7,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "2b42240f6ff57ea7e1b3e0ec1779f0ec",
+        "text": "Rahul Satija, Jeffrey A Farrell, David Gennert, Alexander F Schier, and Aviv Regev. Spatial reconstruction of single-cell gene expression data. Nature Biotechnology, 33(5):495\u2013502, May 2015. ISSN 1087-0156, 1546-1696. doi: 10.1038/nbt.3192.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 7,
+            "filename": "report.pdf"
+        }
+    },
+    {
+        "type": "NarrativeText",
+        "element_id": "7444b7d5daed379ec78ed410337f698b",
+        "text": "Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding, May 2019.",
+        "metadata": {
+            "filetype": "application/pdf",
+            "languages": [
+                "eng"
+            ],
+            "page_number": 7,
+            "filename": "report.pdf"
+        }
+    }
+]
