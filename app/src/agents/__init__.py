@@ -1,4 +1,4 @@
-from src.agents.main import agent
+from src.agents.analyser.base import agent
 
 __all__ = [
     'agent'

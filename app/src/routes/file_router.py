@@ -83,7 +83,7 @@ async def add_file_index(file_ids: List[str], background_tasks: BackgroundTasks)
     #  .execute())
 
     return {
-        "status": "processing",
+        "status": "File uploaded and index processing",
         "message": f"Started processing {len(file_ids)} files in the background",
         "file_ids": file_ids
     }
