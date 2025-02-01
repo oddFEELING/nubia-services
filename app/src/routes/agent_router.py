@@ -1,19 +1,85 @@
-from fastapi import APIRouter
+from dataclasses import dataclass
+from typing import List
 
-from src.agents import agent
+from fastapi import APIRouter, BackgroundTasks
+from pydantic_ai.messages import ModelResponse, ModelRequest, TextPart, UserPromptPart
+
+from src.agents import AnalyserAgent, AnalyserAgentDependencies
 from src.utils import supabase
 
 agent_router = APIRouter(prefix="/agent", tags=["agent"])
 
 
 # ################################################
-# ### Analyser AGent routes
+# ### Analyser Agent routes
 # #################################################
-@agent_router.get("/analyser/{project_id}/chat")
-async def agent_root():
-    messages = await supabase.table('messages').select().execute()
-    result = await agent.run(
-        'What is the csv hosted on https://ncqfadextqcbsnockmgm.supabase.co/storage/v1/object/public/project_files/c66434f3-feea-47b1-9cb8-efe94b158734/files/17c9845799407fb3717d5b66a7c542132cd681f0f4f6822c42a18f8420c5735c_2025_01_30T23_58_48_851Z about')
-    print(result.usage())
+@dataclass
+class AnalyserAgentRouteBody:
+    project_id: str
+    analysis_id: str
+    prompt: str
 
-    return result.data
+
+async def run_analyser_agent(body: AnalyserAgentRouteBody, message_model: List[ModelResponse]):
+    try:
+        print('Starting analyser agent background task...')
+        result = await AnalyserAgent.run(
+            body.prompt,
+            messages=message_model,
+            deps=AnalyserAgentDependencies(project_id=body.project_id, analysis_id=body.analysis_id),
+        )
+
+        (supabase
+         .table('analysis_messages')
+         .insert({
+            'project_id': body.project_id,
+            'analyses_id': body.analysis_id,
+            "content": result.data.content,
+            "options": result.data.options,
+            "sender_role": 'assistant',
+            "usage": str(result.usage().total_tokens)
+        }).execute())
+
+    except Exception as e:
+        print(f"Error in analyser agent background task: {str(e)}")
+        # Log the full error traceback for debugging
+        import traceback
+        print(f"Full error traceback: {traceback.format_exc()}")
+        raise  # Re-raise the exception after logging
+
+
+@agent_router.post("/analyser/chat")
+async def analyser_agent(body: AnalyserAgentRouteBody, background_tasks: BackgroundTasks):
+    messages = (supabase
+                .table('analysis_messages')
+                .select("*")
+                .eq('analyses_id', body.analysis_id)
+                .order('created_at', desc=True)
+                .execute())
+
+    ### Create pydantic model from messages
+    messages_model = [
+        ModelResponse(
+            kind='response',
+            parts=[
+                TextPart(
+                    content=message['content'],
+                    part_kind='text'
+                )])
+        if message['sender_role'] == 'assistant'
+        else ModelRequest(
+            kind="request",
+            parts=[
+                UserPromptPart(
+                    content=message['content'],
+                    part_kind='user-prompt'
+                )
+            ])
+        for message in messages.data]
+
+    print(messages_model)
+
+    background_tasks.add_task(run_analyser_agent, body, messages_model)
+    return {
+        "status": "ok",
+    }

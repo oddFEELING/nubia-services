@@ -75,13 +75,6 @@ async def add_file_index(file_ids: List[str], background_tasks: BackgroundTasks)
     # Add the processing function to background tasks
     background_tasks.add_task(process_files_background, file_ids)
 
-    # Set the status of the files
-    # (supabase
-    #  .table('files')
-    #  .update({"index_status": "pending"})
-    #  .in_("id", file_ids)
-    #  .execute())
-
     return {
         "status": "File uploaded and index processing",
         "message": f"Started processing {len(file_ids)} files in the background",

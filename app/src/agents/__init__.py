@@ -1,5 +1,6 @@
-from src.agents.analyser.base import agent
+from src.agents.analyser.base import AnalyserAgent, AnalyserAgentDependencies
 
 __all__ = [
-    'agent'
+    'AnalyserAgent',
+    "AnalyserAgentDependencies",
 ]
