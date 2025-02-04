@@ -16,7 +16,7 @@ from llama_index.embeddings.openai import OpenAIEmbedding
 from llama_index.llms.openai import OpenAI
 from llama_index.vector_stores.qdrant import QdrantVectorStore
 from qdrant_client import QdrantClient
-
+ 
 # Load environment variables
 load_dotenv()
 qdrant_host = os.getenv('QDRANT_HOST')

@@ -17,3 +17,5 @@ llama-index-readers-remote
 llama-index-llms-anthropic
 llama-index-llms-ollama
 llama-index-vector-stores-qdrant
+easyocr
+python-docx

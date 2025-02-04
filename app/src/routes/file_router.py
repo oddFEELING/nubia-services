@@ -9,6 +9,10 @@ from src.utils.loaders import PDFLoader
 from src.utils.loaders.chunker import chunk_files
 from src.utils.supabase import supabase
 
+
+from src.utils.loaders.docx_loader import docx_txt_loader
+from src.utils.loaders.image_loader import image_text_extractor
+
 file_router = APIRouter(prefix="/files", tags=["files"])
 
 
@@ -25,7 +29,7 @@ async def process_files_background(file_ids: List[str]):
              .update({"index_status": "pending"})
              .in_("id", file_ids)
              .execute())
-
+ 
     doc_list = []
     collection = ''
     if files:
@@ -63,6 +67,71 @@ async def process_files_background(file_ids: List[str]):
                  .execute())
                 return
 
+# ################################################
+# ### Index new files, and process any kind of file
+# #################################################
+async def process_any_file_in_background(file_ids: List[str]):
+    """
+    Background task to process and index files
+    :param file_ids: List of file IDs to process
+    """
+    files = (supabase
+             .table('files')
+             .update({"index_status": "pending"})
+             .in_("id", file_ids)
+             .execute())
+ 
+    doc_list = []
+    collection = '' # How to handle collections
+    if files:
+        # Parse files
+        for file in files.data:
+            try:
+                file_ext = file['extension']
+                collection = f"proj_{file['project_id']}"
+
+                if file_ext == "docx":
+                    docs = docx_txt_loader(file_url=file['file_url'], file=file)
+                    doc_list.extend(docs)
+                    
+                
+                elif file_ext in ['jpg', 'png', 'jpeg']:
+                    docs = image_text_extractor(file_url=file['file_url'])
+                    doc_list.extend(docs)
+                    
+
+                elif file_ext == "pdf":
+                    docs = await PDFLoader(file['file_url']).cloud_load(file)
+                    doc_list.extend(docs)
+                    
+
+            except Exception as e:
+                print(f"Error processing file {file['id']}: {str(e)}")
+                print(e)
+                (supabase
+                 .table('files')
+                 .update({"index_status": "failed"})
+                 .in_("id", file_ids)
+                 .execute())
+                return
+
+        # Index files
+        if collection:
+            try:
+                await chunk_files(doc_list, collection)
+                (supabase
+                 .table('files')
+                 .update({"index_status": "indexed"})
+                 .in_("id", file_ids)
+                 .execute())
+            except Exception as e:
+                print(e)
+                (supabase
+                 .table('files')
+                 .update({"index_status": "failed"})
+                 .in_("id", file_ids)
+                 .execute())
+                return
 
 @file_router.post('/add-index')
 async def add_file_index(file_ids: List[str], background_tasks: BackgroundTasks):
@@ -73,7 +142,7 @@ async def add_file_index(file_ids: List[str], background_tasks: BackgroundTasks)
     :return: Dict with status message
     """
     # Add the processing function to background tasks
-    background_tasks.add_task(process_files_background, file_ids)
+    background_tasks.add_task(process_any_file_in_background, file_ids)
 
     return {
         "status": "File uploaded and index processing",
