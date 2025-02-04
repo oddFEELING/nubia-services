@@ -14,7 +14,7 @@ def image_text_extractor(file_url: str, file)-> Doc:
 
     reader = easyocr.Reader(['en'], gpu=False)
     content = reader.readtext(file_url, detail=0, paragraph=True)
-    final_text = "\n\n".join(content)
+    text = "\n\n".join(content)
 
     ###Create metadata attribute
     extra_info = {
@@ -23,6 +23,6 @@ def image_text_extractor(file_url: str, file)-> Doc:
                 "file_extension": file['extension'],
                 "file_id": file['id']
             }
-    document = Doc(final_text, extra_info)
+    document = Doc(text, extra_info)
 
     return document

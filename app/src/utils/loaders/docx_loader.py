@@ -19,7 +19,7 @@ def docx_txt_loader(file_url: str, file)-> Doc:
     for para in content.paragraphs:
         full_text.append(para.text)
 
-    final_text = "\n\n".join(full_text)
+    text = "\n\n".join(full_text)
 
     ###Create metadata attribute
 
@@ -29,6 +29,6 @@ def docx_txt_loader(file_url: str, file)-> Doc:
                 "file_extension": file['extension'],
                 "file_id": file['id']
             }
-    document = Doc(final_text, extra_info)
+    document = Doc(text, extra_info)
 
     return document
