@@ -1,7 +1,7 @@
 import json
-from io import StringIO
 
 import pandas as pd
+
 
 def describe_csv(file_url: str) -> str:
     """
@@ -9,6 +9,8 @@ def describe_csv(file_url: str) -> str:
     :param file_url: URL of the CSV file to analyze
     :return: JSON string containing DataFrame analysis
     """
+
+    print(f'file url: {file_url}')
     # Read the CSV file from the provided URL
     df = pd.read_csv(file_url)
 
@@ -23,7 +25,6 @@ def describe_csv(file_url: str) -> str:
 
     # Count of null values in each column
     is_null = df.isnull().sum().to_string()
-
 
     # Data types of each column
     column_dtypes = df.dtypes.to_string()

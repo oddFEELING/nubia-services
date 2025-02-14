@@ -7,8 +7,7 @@ from llama_index.core.extractors import (
     TitleExtractor,
     SummaryExtractor,
     KeywordExtractor,
-    QuestionsAnsweredExtractor,
-    DocumentContextExtractor,
+    QuestionsAnsweredExtractor
 )
 from llama_index.core.node_parser import MarkdownNodeParser, TokenTextSplitter
 from llama_index.core.storage.docstore.simple_docstore import SimpleDocumentStore

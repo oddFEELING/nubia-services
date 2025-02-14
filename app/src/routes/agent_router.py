@@ -2,11 +2,13 @@ from dataclasses import dataclass
 from typing import List
 
 from fastapi import APIRouter, BackgroundTasks
-from pydantic_ai.messages import ModelResponse, ModelRequest, TextPart, UserPromptPart
+from pydantic_ai.messages import ModelResponse, ModelRequest, TextPart, UserPromptPart, ToolReturnPart
 
 from src.agents import AnalyserAgent, AnalyserAgentDependencies
 from src.utils import supabase
-
+import logfire
+from pydantic_ai import Agent
+from pydantic import Field
 agent_router = APIRouter(prefix="/agent", tags=["agent"])
 
 
@@ -17,17 +19,19 @@ agent_router = APIRouter(prefix="/agent", tags=["agent"])
 class AnalyserAgentRouteBody:
     project_id: str
     analysis_id: str
-    prompt: str
+    model: str = 'groq:llama-3.3-70b-versatile'
 
 
-async def run_analyser_agent(body: AnalyserAgentRouteBody, message_model: List[ModelResponse]):
+async def run_analyser_agent(body: AnalyserAgentRouteBody, message_model: List[ModelResponse], model: str = 'groq:llama-3.3-70b-versatile'):
     try:
         print('Starting analyser agent background task...')
-        result = await AnalyserAgent.run(
-            body.prompt,
-            messages=message_model,
+        result = await AnalyserAgent(model=model).run(
+            user_prompt=message_model[0].parts[0].content
+            if len(message_model) > 0 else "Hello There",
+            message_history=message_model,
             deps=AnalyserAgentDependencies(project_id=body.project_id, analysis_id=body.analysis_id),
         )
+        
 
         (supabase
          .table('analysis_messages')
@@ -37,15 +41,54 @@ async def run_analyser_agent(body: AnalyserAgentRouteBody, message_model: List[M
             "content": result.data.content,
             "options": result.data.options,
             "sender_role": 'assistant',
+            "model": model,
             "usage": str(result.usage().total_tokens)
         }).execute())
 
+        (supabase
+         .table('analyses')
+         .update({'loading_text': '', "last_run_success": True})
+         .eq('id', body.analysis_id)
+         .execute())
+
     except Exception as e:
+        (supabase
+         .table('analyses')
+         .update({'loading_text': 'Previous run failed.', "last_run_success": False})
+         .eq('id', body.analysis_id)
+         .execute())
         print(f"Error in analyser agent background task: {str(e)}")
         # Log the full error traceback for debugging
         import traceback
         print(f"Full error traceback: {traceback.format_exc()}")
         raise  # Re-raise the exception after logging
+
+
+@dataclass
+class NameAnalysesReturn:
+    title: str = Field(description="A very short 4-6 word name of the analyses")
+    description: str = Field(description="A short description phrase of the analyses")
+
+async def name_analyses(body: AnalyserAgentRouteBody, messages: List[dict]):
+    client = Agent(model="openai:gpt-4o-mini", result_type=NameAnalysesReturn)
+    analyses_name = await client.run(
+        user_prompt=f"""an analyses has been going on for a while now with the following conversations: 
+                <conversations>
+                {messages}
+                </conversations>
+                give the analyses a name and description based on the conversations"""
+    )
+    (supabase
+     .table('analyses')
+     .update({
+         'title': analyses_name.data.title, 
+         'description': analyses_name.data.description, 
+         'loading_text': "Giving the analysis a name..."
+     })
+     .eq('id', body.analysis_id)
+     .execute())
+    
+
 
 
 @agent_router.post("/analyser/chat")
@@ -57,29 +100,48 @@ async def analyser_agent(body: AnalyserAgentRouteBody, background_tasks: Backgro
                 .order('created_at', desc=True)
                 .execute())
 
+    analysis = (supabase
+     .table('analyses')
+     .update({'loading_text': 'loading...', "last_run_success": True})
+     .eq('id', body.analysis_id)
+     .execute())
+
+
     ### Create pydantic model from messages
-    messages_model = [
-        ModelResponse(
-            kind='response',
-            parts=[
-                TextPart(
-                    content=message['content'],
-                    part_kind='text'
-                )])
-        if message['sender_role'] == 'assistant'
-        else ModelRequest(
-            kind="request",
-            parts=[
-                UserPromptPart(
-                    content=message['content'],
-                    part_kind='user-prompt'
-                )
-            ])
-        for message in messages.data]
+    messages_model = []
+    for message in messages.data:
+        if message['sender_role'] == "user":
+            messages_model.append(ModelRequest(
+                kind="request",
+                parts=[
+                    UserPromptPart(
+                        content=message['content'],
+                        part_kind='user-prompt',
+                    )   
+                ]
+            ))
+        elif message['sender_role'] == 'assistant':
+            messages_model.append(ModelResponse(
+                kind='response',
+                parts=[TextPart(content=message['content'], part_kind='text')]
+            ))
+        elif message['sender_role'] == 'tool':
+            messages_model.append(ModelResponse(
+                kind='response',
+                parts=[
+                    TextPart(
+                        content=f"Tool: {message['tool_name']}\n\n{message['content']}",
+                        part_kind='text',
+                    ),
+                ],
+            ))
 
-    print(messages_model)
+    background_tasks.add_task(run_analyser_agent, body, messages_model, body.model)
+    print(analysis.data)
+    if analysis.data[0]['title'] == 'New Analysis' and len(messages.data) > 8:
+        background_tasks.add_task(name_analyses, body, messages.data)
 
-    background_tasks.add_task(run_analyser_agent, body, messages_model)
+    
     return {
         "status": "ok",
     }
