@@ -7,7 +7,8 @@ from llama_index.core.extractors import (
     TitleExtractor,
     SummaryExtractor,
     KeywordExtractor,
-    QuestionsAnsweredExtractor
+    QuestionsAnsweredExtractor,
+    # DocumentContextExtractor
 )
 from llama_index.core.node_parser import MarkdownNodeParser, TokenTextSplitter
 from llama_index.core.storage.docstore.simple_docstore import SimpleDocumentStore
@@ -60,21 +61,21 @@ async def chunk_files(docs: List[Document], collection: str):
     docstore.add_documents(docs)
 
     # TRANSFORMATIONS - Context extractor
-    context_extractor = DocumentContextExtractor(
-        docstore=docstore,
-        vector_store=vector_store,
-        max_context_size=128000,
-        llm=llm,
-        oversized_document_strategy="warn",
-        max_output_tokens=8000,
-        key="context",
-    )
+    # context_extractor = DocumentContextExtractor(
+    #     docstore=docstore,
+    #     vector_store=vector_store,
+    #     max_context_size=128000,
+    #     llm=llm,
+    #     oversized_document_strategy="warn",
+    #     max_output_tokens=8000,
+    #     key="context",
+    # )
 
     # Define base transformations
     transformations = [
         text_splitter,  # Split text first
         MarkdownNodeParser(),
-        context_extractor,
+        # context_extractor,
         TitleExtractor(nodes=10, llm=llm),
         SummaryExtractor(llm=llm),
         KeywordExtractor(llm=llm),

@@ -1,0 +1,58 @@
+version: "3"
+
+services:
+  server:
+    container_name: nubia
+    build:
+      context: app
+      dockerfile: Dockerfile
+      args:
+        - REBUILD_TRIGGER=${REQUIREMENTS_REBUILD_TRIGGER:-default}
+    ports:
+      - 8000:8000
+    volumes:
+      - ./app:/app
+    networks:
+      - nubia-net
+    environment:
+      - ANTHROPIC_API_KEY=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
+      - UNSTRUCTURED_API_KEY=2llN2QaaHyco91ifR6IIZ0sC1fdTms
+      - UNSTRUCTURED_API_URL=https://api.unstructuredapp.io/general/v0/general
+      - OPENAI_API_KEY=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
+      - QDRANT_HOST=qdrant
+      - LLAMA_CLOUD_API_KEY=llx-CjdO5VF2xh8BTiFVBq9WY9ejEEYTXixRpuPx1gueGbPHMHu9
+      - SUPABASE_URL=https://ncqfadextqcbsnockmgm.supabase.co
+      - SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5jcWZhZGV4dHFjYnNub2NrbWdtIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczNzgwMjc3OCwiZXhwIjoyMDUzMzc4Nzc4fQ.1rVGKlOQFjtN8v822IJailCa6GsAdZIEzoP8me7_tPQ
+      - LOGFIRE_TOKEN=zZTWDLgdQt5qMtKKp6RNPmTbPHz3kZQfCDD6vpJbHF7C
+
+  ollama:
+    container_name: ollama
+    build: ollama
+    ports:
+      - 11434:11434
+    volumes:
+      - nubia-ollama:/ollama
+    networks:
+      - nubia-net
+    entrypoint: ["/usr/bin/bash", "pull-llama3.sh"]
+
+  qdrant:
+    container_name: qdrant
+    image: qdrant/qdrant
+    ports:
+      - 6333:6333
+      - 6334:6334
+    volumes:
+      - ./qdrant_storage:/qdrant/storage:z
+    networks:
+      - nubia-net
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+networks:
+  nubia-net:
+    driver: bridge
+
+volumes:
+  nubia-ollama:
+    driver: local
