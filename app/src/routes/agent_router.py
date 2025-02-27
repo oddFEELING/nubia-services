@@ -5,6 +5,7 @@ from fastapi import APIRouter, BackgroundTasks
 from pydantic_ai.messages import ModelResponse, ModelRequest, TextPart, UserPromptPart, ToolReturnPart
 
 from src.agents import AnalyserAgent, AnalyserAgentDependencies
+from src.agents import StoryAgent, StoryAgentDependencies
 from src.utils import supabase
 import logfire
 from pydantic_ai import Agent
@@ -20,7 +21,7 @@ class AnalyserAgentRouteBody:
     project_id: str
     analysis_id: str
     model: str = 'groq:llama-3.3-70b-versatile'
-
+ 
 
 async def run_analyser_agent(body: AnalyserAgentRouteBody, message_model: List[ModelResponse], model: str = 'groq:llama-3.3-70b-versatile'):
     try:
@@ -141,6 +142,59 @@ async def analyser_agent(body: AnalyserAgentRouteBody, background_tasks: Backgro
     if analysis.data[0]['title'] == 'New Analysis' and len(messages.data) > 8:
         background_tasks.add_task(name_analyses, body, messages.data)
 
+    
+    return {
+        "status": "ok",
+    }
+
+
+
+# ################################################
+# ### Story Agent routes
+# #################################################
+@dataclass
+class StoryAgentRouteBody:
+    analysis_id: str
+    story_id: str
+    model: str = 'groq:llama-3.3-70b-versatile'
+ 
+
+async def run_story_agent(body: StoryAgentRouteBody, model: str = 'groq:llama-3.3-70b-versatile'):
+    try:
+        print('Starting story agent background task...')
+        result = await StoryAgent(model=model).run(
+            user_prompt=f"""
+                            You are an expert journalist with a deep understanding of storytelling. Your task is to transform the provided summary of findings into a compelling, well-structured, and engaging journalistic story.
+                            Make the story compelling, informative, and impactful. Ensure it reads like a high-quality article suitable for publication in a top-tier news outlet.
+                        """,
+            deps=StoryAgentDependencies(analysis_id=body.analysis_id, story_id=body.story_id),
+        )
+        
+
+        (supabase
+         .table('stories')
+         .update({'content': result.data.content, "last_run_success": True})
+         .eq('id', body.story_id)
+         .execute())
+
+    except Exception as e:
+        (supabase
+         .table('stories')
+         .update({'content': 'Failed to run task to generate story.', "last_run_success": False})
+         .eq('id', body.story_id)
+         .execute())
+        print(f"Error in story agent background task: {str(e)}")
+        # Log the full error traceback for debugging
+        import traceback
+        print(f"Full error traceback: {traceback.format_exc()}")
+        raise  # Re-raise the exception after logging
+
+
+@agent_router.post("/story/chat")
+async def analyser_agent(body: StoryAgentRouteBody, background_tasks: BackgroundTasks):
+
+    background_tasks.add_task(run_story_agent, body, body.model)
+    
     
     return {
         "status": "ok",

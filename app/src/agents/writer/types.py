@@ -11,9 +11,17 @@ from pydantic import BaseModel, Field
 @dataclass
 class StoryAgentDependencies:
     """Dependencies required by story agents"""
-    project_id: str
-    writer_id: str
+    story_id: str
+    analysis_id: str
  
+
+class ConversationSummaryReturn(BaseModel):
+    """Return type for analysis conversation summary"""
+    content: str = Field(
+        description="A comprehensive and detailed summary of the findings of the analysis.",
+        min_length=100,  # Ensure meaningful content
+        max_length=500,  # Reasonable limit for display
+    )
 
 class StoryResult(BaseModel):
     """Return type for story agents"""
@@ -24,8 +32,8 @@ class StoryResult(BaseModel):
     actions_taken: List[str] = Field(
         description="List of actions taken during story generation",
         examples=[
-            ["Retrieved project files", "Analyzed CSV structure", "Generated summary"],
-            ["Retrieved PDF content", "Extracted key information", "Compiled findings", "Generated story content"]
+            ["Retrieved analysis conversation"],
+            ["Generated story content"]
         ]
     )
 
@@ -34,7 +42,7 @@ class ChatReturnType(BaseModel):
     """Return type for the chat rendering on the front end"""
     content: str = Field(
         description="Main content (response) of the chat message which is a conversation between the user and the agent. Must be very expressive and valid markdown string. Properly formatted markdown is recommended.",
-        min_length=10,  # Ensure meaningful content
+        min_length=500,  # Ensure meaningful content
         max_length=4000,  # Reasonable limit for display
     )
     options: List[str] = Field(

@@ -4,15 +4,17 @@
   
 - base.py and types.py files were created for the story writing agent in the writer directory.
   
-- I assumed the agent will need project_id and writer_id as dependencies, that can be found in types.py file.
+- The agent will need analysis_id and story_id as dependencies, that can be found in types.py file.
   
-- I also assumed that the agent will perform analysis and use the findings for story generation, most tools were adapted from AnalyserAgent.
+- A new file (get_analysis_messages.py) has been created in the tools directory, it contains function to fetch analysis messages.
   
-- Check the base.py file for the correct database table and attributes that were used in set_loading_state and save_message methods.
-
+- A tool get_analysis_conversation_summary() has been made available to the story agent, it summarizes conversations.
+  
 - I added a section called "writer" to the prompts.toml file, this template is used by the story writing agent.
   
-- Most of the code was adapted from AnalyserAgent.
+- A new route /story/chat has been added to the agent_router.py file to serve as an API endpoint for the story writing agent.
+
+- Concise system and user prompts have been used in the implementation.
 
 Thank You
   
