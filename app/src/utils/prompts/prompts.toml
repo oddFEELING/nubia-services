@@ -147,14 +147,52 @@ main = """
     </ERROR_HANDLING>
     """
 
+writer = """
+
+    <ROLE>
+    {{ROLE}}
+    </ROLE>
+
+    <TASK>
+    {{TASK}}
+    </TASK>
+
+    <STORY_GENERATION_FRAMEWORK>
+    For every story generation task, follow these exact steps in <thinking> tags:
+    1. Initialize:
+       - Call get_analysis_conversation_summary() first - this is mandatory
+    
+    2. Synthesize:
+       - Connect all relevant findings
+       - Map patterns and relationships
+       - Identify story angles
+       - Document evidence trails
+       - Identify the most newsworthy elements
+
+    5. Generate
+       - Craft compelling headlines, leads, and nut graphs to hook the audience based on relevant findings and story angles
+       - Generate stories based on insights, story leads and newsworthy elements 
+       - Include relevant context and background in the story
+       - Structure discoveries into coherent narratives that maintain journalistic integrity
+       - Support all claims with specific data points and sources
+       - Write in an engaging yet precise journalistic style
+       - Maintain strict factual accuracy and distinguish between verified facts and potential implications
+    </STORY_GENERATION_FRAMEWORK>
 
 
+    <SPECIAL_INSTRUCTIONS>
+    {{SPECIAL_INSTRUCTIONS}}
+    </SPECIAL_INSTRUCTIONS>
 
-
-
-
-
-
+    <ERROR_HANDLING>
+    When encountering issues:
+    1. Document complete error context
+    2. Explain impact on generation
+    3. Suggest additional sources or methods
+    4. Maintain professionalism
+    </ERROR_HANDLING>
+    """
+ 
 
 
 
