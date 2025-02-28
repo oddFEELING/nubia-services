@@ -3,12 +3,11 @@ from typing import Literal
 
 import logfire
 from dotenv import load_dotenv
-
 from pydantic_ai import Agent, RunContext
+
 from src.agents.writer.types import StoryAgentDependencies, ChatReturnType, ConversationSummaryReturn
 from src.tools import get_analysis_conversation
-from src.utils.prompts.template import TemplateEngine 
-
+from src.utils.prompts.template import TemplateEngine
 
 # Load environment variables and configure logging
 load_dotenv()
@@ -49,7 +48,7 @@ system_prompt = prompt_template.format(
     - Prioritize efficiency in every step
     - All generated stories must be based on the insights provided
     """,
-    
+
     TASK=""" story generation guidelines:
 
     1. Journalistic Writing and Storytelling:
@@ -92,12 +91,13 @@ system_prompt = prompt_template.format(
 # Type definition for supported models
 ModelType = Literal['openai:gpt-4o', 'anthropic:claude-3-5-sonnet', 'groq:llama-3.3-70b-versatile']
 
+
 class StoryAgent:
     """
     A class-based implementation of the Story Agent that handles dynamic model selection
     and proper tool registration.
     """
-    
+
     def __init__(self, model: ModelType):
         """
         Initialize the Story Agent with the specified model.
@@ -114,14 +114,11 @@ class StoryAgent:
 
         logfire.info(f"Initializing story agent with model: {model}")
         self._register_tools()
-    
+
     def _register_tools(self) -> None:
         """Register all available tools with the agent."""
         # Register each tool with appropriate decorators and configurations
         self.agent.tool()(self.get_analysis_conversation_summary)
-        
-        
-    
 
     # ################################################
     # ### TOOLS
@@ -141,7 +138,7 @@ class StoryAgent:
             messages = await get_analysis_conversation(ctx.deps.analysis_id)
             if not messages:
                 raise ValueError("No conversations found for the analysis")
-            
+
             client = Agent(model="openai:gpt-4o-mini", result_type=ConversationSummaryReturn)
             findings_summary = await client.run(
                 user_prompt=f""" You are an advanced AI assistant specializing in generating structured, detailed, and comprehensive summaries of conversations that involved findings from an analysis. Your goal is to extract key findings, insights, and conclusions drawn from the conversation while maintaining clarity and objectivity. 
@@ -165,14 +162,13 @@ class StoryAgent:
                         Kindly summarize the attached conversation.
                         
                         <CONVERSATIONS>
-                        {messages}
+                        {str(messages)}
                         </CONVERSATIONS>
                         """
             )
 
-            
-            return findings_summary.content
-        
+            return findings_summary.data.content
+
         except Exception as e:
             logfire.error(f"Error getting analysis conversation: {str(e)}")
             return "Failed to retrieve analysis conversation. This step is mandatory before proceeding with story generation."
@@ -181,12 +177,13 @@ class StoryAgent:
     # ### END OF TOOLS
     # ################################################
 
-    async def run(self, *args, **kwargs): 
+    async def run(self, *args, **kwargs):
         """
         Run the agent with the given arguments.
         Delegates to the underlying agent's run method.
         """
         return await self.agent.run(*args, **kwargs)
+
 
 # Factory function to create an instance of StoryAgent
 def create_story_agent(model: ModelType) -> StoryAgent:
