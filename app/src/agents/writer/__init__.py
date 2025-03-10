@@ -3,5 +3,5 @@ from src.agents.writer.types import StoryAgentDependencies
 
 __all__ = [
     "StoryAgent",
-    "StoryAgentDepencies",
+    "StoryAgentDependencies",
 ]

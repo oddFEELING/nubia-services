@@ -6,9 +6,9 @@
   
 - The agent will need analysis_id and story_id as dependencies, that can be found in types.py file.
   
-- A new file (get_analysis_messages.py) has been created in the tools directory, it contains function to fetch analysis messages.
+- New files get_analysis_messages.py, file_parser.py, and story_details.py have been created in the tools directory, it contains function to fetch analysis messages, extract text from pdf files and fetch story details from the database respectively.
   
-- A tool get_analysis_conversation_summary() has been made available to the story agent, it summarizes conversations.
+- Tools get_project_files, extract_text_from_pdf, get_csv_summary and get_analysis_conversation_summary() have been made available to the story agent.
   
 - I added a section called "writer" to the prompts.toml file, this template is used by the story writing agent.
   

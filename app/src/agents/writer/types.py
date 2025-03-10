@@ -3,16 +3,17 @@ This module contains shared types and dependencies for the story agents.
 """
 
 from dataclasses import dataclass
-from typing import List
+from typing import List, Optional
 
 from pydantic import BaseModel, Field
 
 
 @dataclass
-class StoryAgentDependencies:
+class StoryAgentDependencies():
     """Dependencies required by story agents"""
     story_id: str
-    analysis_id: str
+    project_id: str
+    analysis_id: Optional[str] = None
  
 
 class ConversationSummaryReturn(BaseModel):
@@ -42,8 +43,8 @@ class ChatReturnType(BaseModel):
     """Return type for the chat rendering on the front end"""
     content: str = Field(
         description="Main content (response) of the chat message which is a conversation between the user and the agent. Must be very expressive and valid markdown string. Properly formatted markdown is recommended.",
-        min_length=500,  # Ensure meaningful content
-        max_length=4000,  # Reasonable limit for display
+        min_length=1000,  # Ensure meaningful content
+        max_length=5000,  # Reasonable limit for display
     )
     options: List[str] = Field(
         description="A list of strings that are very short actionable options/suggestions that the user can choose from.",

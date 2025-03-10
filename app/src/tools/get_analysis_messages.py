@@ -5,7 +5,7 @@ from rich.pretty import pprint
 
 from src.utils import supabase
 
-
+ 
 async def get_analysis_conversation(analysis_id: str) -> List[dict]:
     """
     Get the conversation associated with an analysis
@@ -20,5 +20,5 @@ async def get_analysis_conversation(analysis_id: str) -> List[dict]:
                 .eq('id', analysis_id)
                 .order('created_at', desc=True)
                 .execute())
-    pprint(messages.data)
+    pprint(messages)
     return messages.data

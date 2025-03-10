@@ -1,15 +1,17 @@
 from dataclasses import dataclass
-from typing import List
+from typing import List, Optional
 
 from fastapi import APIRouter, BackgroundTasks
 from pydantic_ai.messages import ModelResponse, ModelRequest, TextPart, UserPromptPart, ToolReturnPart
 
 from src.agents import AnalyserAgent, AnalyserAgentDependencies
 from src.agents import StoryAgent, StoryAgentDependencies
+from src.tools import get_story_details, project_file_list, parse_files
 from src.utils import supabase
 import logfire
 from pydantic_ai import Agent
-from pydantic import Field
+from pydantic import Field, BaseModel
+from rich.pretty import pprint
 agent_router = APIRouter(prefix="/agent", tags=["agent"])
 
 
@@ -91,7 +93,6 @@ async def name_analyses(body: AnalyserAgentRouteBody, messages: List[dict]):
     
 
 
-
 @agent_router.post("/analyser/chat")
 async def analyser_agent(body: AnalyserAgentRouteBody, background_tasks: BackgroundTasks):
     messages = (supabase
@@ -153,23 +154,47 @@ async def analyser_agent(body: AnalyserAgentRouteBody, background_tasks: Backgro
 # ### Story Agent routes
 # #################################################
 @dataclass
-class StoryAgentRouteBody:
-    analysis_id: str
+class StoryAgentRouteBody(BaseModel):
+    analysis_id: Optional[str] = None
     story_id: str
+    prompt: Optional[str] = None
     model: str = 'groq:llama-3.3-70b-versatile'
  
 
-async def run_story_agent(body: StoryAgentRouteBody, model: str = 'groq:llama-3.3-70b-versatile'):
+async def run_story_agent(body: StoryAgentRouteBody, project_id: str, model: str = 'groq:llama-3.3-70b-versatile'):
     try:
         print('Starting story agent background task...')
-        result = await StoryAgent(model=model).run(
-            user_prompt=f"""
-                            You are an expert journalist with a deep understanding of storytelling. Your task is to transform the provided summary of findings into a compelling, well-structured, and engaging journalistic story.
-                            Make the story compelling, informative, and impactful. Ensure it reads like a high-quality article suitable for publication in a top-tier news outlet.
-                        """,
-            deps=StoryAgentDependencies(analysis_id=body.analysis_id, story_id=body.story_id),
-        )
+
+        if body.analysis_id is None:
         
+            result = await StoryAgent(model=model).run(
+                user_prompt=f"""
+                                You are an expert journalist with a deep understanding of storytelling. Your task is to analyze files and transform findings into a compelling, well-structured, and engaging journalistic story.
+                                Make the story compelling, informative, and impactful. Ensure it reads like a high-quality article suitable for publication in a top-tier news outlet.
+                                <USER_REQUEST>
+                                {body.prompt}
+                                </USER_REQUEST>
+                            """,
+                deps=StoryAgentDependencies(story_id=body.story_id, project_id=project_id, analysis_id=body.analysis_id),
+            )
+        
+        else:
+        
+            result = await StoryAgent(model=model).run(
+                user_prompt=f"""
+                                You are an expert journalist with a deep understanding of storytelling. Your task is to analyze files and transform findings into a compelling, well-structured, and engaging journalistic story.
+                                Make the story compelling, informative, and impactful. Ensure it reads like a high-quality article suitable for publication in a top-tier news outlet.
+                                <USER_REQUEST>
+                                {body.prompt}
+                                </USER_REQUEST>
+
+                                Also use the get_analysis_conversation_summary tool to get additional context and insights for the story generation.
+                            """,
+                deps=StoryAgentDependencies(story_id=body.story_id, project_id=project_id, analysis_id=body.analysis_id),
+            )
+        
+        
+        pprint(result.data.content)
 
         (supabase
          .table('stories')
@@ -193,9 +218,15 @@ async def run_story_agent(body: StoryAgentRouteBody, model: str = 'groq:llama-3.
 @agent_router.post("/story/chat")
 async def analyser_agent(body: StoryAgentRouteBody, background_tasks: BackgroundTasks):
 
-    background_tasks.add_task(run_story_agent, body, body.model)
+    result = await get_story_details(body.story_id)
+    project_id = result[0]["projectId"]
+    #new_result = await project_file_list(project_id)
+    #txt = await parse_files(body.file_url)
+    background_tasks.add_task(run_story_agent, body, project_id, body.model)
+    
     
     
     return {
         "status": "ok",
+        #"result": txt
     }

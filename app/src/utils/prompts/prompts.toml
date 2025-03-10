@@ -159,10 +159,27 @@ writer = """
 
     <STORY_GENERATION_FRAMEWORK>
     For every story generation task, follow these exact steps in <thinking> tags:
+
     1. Initialize:
-       - Call get_analysis_conversation_summary() first - this is mandatory
+       - Call get_project_files() first - this is mandatory
+       - Map available source materials
+       - Identify document types and relationships
+       - Flag potential story angles
     
-    2. Synthesize:
+    2. Plan:
+       - Break down investigation into clear lines of inquiry
+       - Identify required investigative tools
+       - Create comprehensive analysis sequence
+       - Map potential cross-references
+    
+    3. Execute:
+       - Follow investigative sequence
+       - Document every finding
+       - Cross-reference across sources
+       - Build evidence chains
+       - Flag potential leads
+    
+    4. Synthesize:
        - Connect all relevant findings
        - Map patterns and relationships
        - Identify story angles
