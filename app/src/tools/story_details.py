@@ -13,11 +13,11 @@ async def get_story_details(story_id: str) -> List[dict]:
     :return: A list of dictionary object
     """
 
-    print(f'Getting details of the story: {story_id}')
+    print(f'\n\n .. Getting details of the story: {story_id} ..\n\n')
     result = (supabase
                 .table('stories')
                 .select("id", "projectId")
                 .eq('id', story_id)
                 .execute())
     
-    return result.data
+    return result.data 

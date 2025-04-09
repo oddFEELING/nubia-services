@@ -13,7 +13,7 @@ async def get_analysis_conversation(analysis_id: str) -> List[dict]:
     :return: A list of the messages (conversation)
     """
 
-    print(f'Getting the conversations for analysis: {analysis_id}')
+    print(f'\n\n .. Getting the conversations for analysis: {analysis_id} ..\n\n')
     messages = (supabase
                 .table('analysis_messages')
                 .select("*")
@@ -21,4 +21,4 @@ async def get_analysis_conversation(analysis_id: str) -> List[dict]:
                 .order('created_at', desc=True)
                 .execute())
     pprint(messages)
-    return messages.data
+    return messages.data 

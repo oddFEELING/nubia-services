@@ -12,7 +12,7 @@ async def project_file_list(project_id: str) -> List[dict]:
     :return:
     """
 
-    print(f'Getting project files for {project_id}')
+    print(f'\n\n ..Getting project files for {project_id} ..\n\n')
     files = (supabase
              .table('files')
              .select(
@@ -21,4 +21,4 @@ async def project_file_list(project_id: str) -> List[dict]:
     ).eq('project_id', project_id)
              .execute()
              )
-    return files.data
+    return files.data 

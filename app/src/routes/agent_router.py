@@ -159,7 +159,7 @@ class StoryAgentRouteBody(BaseModel):
     story_id: str
     prompt: Optional[str] = None
     model: str = 'groq:llama-3.3-70b-versatile'
- 
+  
 
 async def run_story_agent(body: StoryAgentRouteBody, project_id: str, model: str = 'groq:llama-3.3-70b-versatile'):
     try:
@@ -216,7 +216,7 @@ async def run_story_agent(body: StoryAgentRouteBody, project_id: str, model: str
 
 
 @agent_router.post("/story/chat")
-async def analyser_agent(body: StoryAgentRouteBody, background_tasks: BackgroundTasks):
+async def story_agent(body: StoryAgentRouteBody, background_tasks: BackgroundTasks):
 
     result = await get_story_details(body.story_id)
     project_id = result[0]["projectId"]

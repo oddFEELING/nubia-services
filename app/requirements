@@ -17,3 +17,7 @@ llama-index-llms-anthropic
 llama-index-readers-file
 llama-index-vector-stores-qdrant
 llama-extract
+pytest
+pytest-mock
+pytest-asyncio
+toml
